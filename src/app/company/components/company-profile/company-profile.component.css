@@ -1,0 +1,28 @@
+.container{
+    position: relative;
+    width: 880px;
+    border: 1px solid black;
+    padding: 25px;
+}
+.container-extra{
+    border:0;
+    border-bottom: 1px solid black;
+}
+.user-profile-icon{
+    font-size: 90px;
+    margin-left: 70px;
+    color: grey;
+}
+.companyLogo{
+    width: 140px;
+    height: 140px;
+}
+i{
+    cursor: pointer;
+}
+.fa-trash-alt:hover{
+    color: red;
+}
+.container .edit-icon:hover {
+    color: rgb(92, 92, 255);
+}

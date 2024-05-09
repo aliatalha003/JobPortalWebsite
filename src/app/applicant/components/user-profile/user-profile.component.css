@@ -1,0 +1,72 @@
+.container{
+    position: relative;
+    width: 880px;
+    border: 1px solid black;
+    padding: 25px;
+}
+.container-extra{
+    border:0;
+    border-bottom: 1px solid black;
+}
+.user-profile-icon{
+    font-size: 90px;
+    margin-left: 70px;
+    color: grey;
+}
+.edit-icon:hover{
+    color: rgb(69, 69, 113);
+
+}
+.edit-icon{
+    color: #a3a3a3; 
+    font-size: 30px;
+    float: right;
+    position: absolute;
+    top:0 ;
+    right: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+/* Button styles */
+.btns1, .btns2 {
+    border: none;
+    border-radius: 5px;
+    /* padding: 12px 24px; */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* font-size: 16px; */
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.btns1 {
+    /* background-color: #787878; */
+    color: #fff;
+}
+
+.btns2 {
+    background-color: #787878;
+    color: #fff;
+}
+
+/* Hover effects */
+.btns1:hover {
+    transform: translateY(-2px); /* Move button up slightly on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.btns2:hover {
+    transform: translateY(-2px); /* Move button up slightly on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Focus effect */
+.btns1:focus, .btns2:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(96, 163, 188, 0.4); /* Blue shadow on focus */
+}
+
+/* Active effect */
+.btns1:active, .btns2:active {
+    transform: translateY(1px); /* Move button down slightly when clicked */
+}

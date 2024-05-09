@@ -1,0 +1,227 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+
+.container {
+    padding: 0; 
+    margin: 0;	
+    margin-left: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+    position: relative;
+	margin-bottom: 150px;
+    background-color: #f2f2f2;
+
+}
+
+
+.screen__content {
+	z-index: 1;
+	position: relative;	
+	margin-right: 700px;
+    top: 20px;
+	
+}
+
+.screen__background {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+   
+     /* Adjust width as needed */
+    
+}
+
+.screen__background img {
+    width: 500px;
+    height: 500px;
+ /* Ensure the image covers the entire area */
+}
+
+
+.login {
+	width: 320px;
+	padding: 30px;
+	padding-top: 156px;
+}
+
+.login__field {
+    margin-top: 30px;
+	padding: 5px 0px;	
+	position: relative;	
+    display: flex;
+    width: 100%;
+    margin-left: 100px;
+	
+}
+
+.login__icon {
+	position: absolute;
+	top: 30px;
+	color: #5B7E6F;
+}
+textarea {
+    border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width:500px;
+	transition: .2s;
+    margin-top:6px ;
+    margin-bottom: 20px;/* Allow the user to vertically resize the textarea */
+  }
+
+  textarea:active,
+  textarea:focus,
+  textarea:hover {
+	outline: none;
+	border-bottom-color: #5B7E6F;
+}
+
+.login__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width:500px;
+	transition: .2s;
+    margin-top:6px ;
+    margin-bottom: 20px;
+
+
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+	outline: none;
+	border-bottom-color: #5B7E6F;
+}
+
+/*.login__submit {
+	background: #fff;
+   align-items: center;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 16px ;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}*/
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	border-color: #5B7E6F;
+	outline: none;
+}
+
+.button__icon {
+	font-size: 24px;
+	margin-left: auto;
+	color: #5B7E6F;
+}
+
+.social-login {	
+	position: absolute;
+	height: 140px;
+	width: 160px;
+	text-align: center;
+	bottom: 0px;
+	right: 0px;
+	color: #fff;
+}
+
+.social-icons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-login__icon {
+	padding: 20px 10px;
+	color: #fff;
+	text-decoration: none;	
+	text-shadow: 0px 0px 8px #5B7E6F;
+}
+
+.social-login__icon:hover {
+	transform: scale(1.5);	
+}
+
+.loginhead{
+	position: center;
+	
+	height: 100%;
+    color: #1A4D2E;
+   
+	font-weight:700;
+    font-size: 30px;
+    text-align: center;
+    bottom: 10px;
+   margin-left: 600px;
+}
+.main{
+	width: 350px;
+	height: 500px;
+	
+	
+	background: #5B7E6F;
+	
+}
+.button {
+    width: 120px; 
+    background-color: #ffffff; /* White background */
+    color: #1A4D2E; /* Purple text */
+    border: none;
+    border-radius: 30px; /* Rounded borders */
+    padding: 15px 15px; 
+    font-size: 20px;
+    font:bold; /* Adjust font size as needed */
+    cursor: pointer;
+    font-weight: bold;
+	border: 3px solid #D4D3E8;
+	text-transform: uppercase;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+    
+  }
+  
+  
+  .button:hover {
+    background-color: #5B7E6F; /* Purple background on hover */
+    color: #ffffff; /* White text on hover */
+  }
+  .sign-up-text {
+    margin-top: -60px;
+    text-align: center;
+    font-size: 14px; /* Adjust font size as needed */
+    color: black; /* Adjust text color as needed */
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+	margin-left: -30px;
+}
+
+.sign-up-text span:hover {
+    text-decoration: underline; /* Underline text on hover */
+}

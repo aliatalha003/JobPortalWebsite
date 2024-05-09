@@ -1,0 +1,95 @@
+<div class="container container-extra mb-5">
+  <div class="row">
+    <div class="col-lg-3" style="position: relative; text-align: right;">
+      <img class="companyLogo" src="{{ companyObject.logo }}">
+    </div>
+    <div class="col-lg-9 d-flex flex-column justify-content-center">
+      <h5 *ngIf="!editMode">{{ companyObject.name }}<i class="fas fa-check-circle fs-5" style="color: #005ca3;"></i>
+      </h5>
+      <input *ngIf="editMode" type="text" [(ngModel)]="companyObject.name" (change)="updateCompanyData()">
+
+      <p class="form-text">
+        <i class="fas fa-link"></i>
+        <a class="text-dark" *ngIf="!editMode" href=""> {{companyObject.email}}
+          </a>
+      <input *ngIf="editMode" type="text" [(ngModel)]="companyObject.email" (change)="updateCompanyData()">
+
+        |
+        <i class="fab fa-facebook-square" style="font-size: 18px;"></i>
+        <i class="fab fa-linkedin ms-1" style="font-size: 18px;"></i>
+      </p>
+      <i (click)="toggleEditMode()" class="far fa-edit edit-icon"
+        style="color: #a3a3a3; font-size: 30px; float: right; position: absolute; top: 0; right: 0; "></i>
+    </div>
+    <div class="col-lg-12 d-flex ms-auto">
+      <input class="form-control mt-2 w-25 ms-auto  " id="formFileLg" type="file" (change)="onLogoSelected($event)">
+      <button class="btn btn-success w-25  ms-2 " style="background-color: #5B7E6F; height: 45px;" (click)="updateCompanyLogo()">Edit
+        Profile Photo</button>
+    </div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <h3>Company Profile</h3>
+  <!-- <i (click)="toggleEditMode()" class="far fa-edit edit-icon" style="color: #a3a3a3; font-size: 30px; float: right; position: absolute; top: 0; right: 0;"></i> -->
+  <div class="row">
+    <div class="col-lg-6 mt-2 JobDetailsP">
+      <p>Location:
+        <span *ngIf="!editMode" class="form-text">{{ companyObject.address }}</span>
+        <input *ngIf="editMode" type="text" [(ngModel)]="companyObject.address" (change)="updateCompanyData()">
+      </p>
+      <p>Industry:
+        <span *ngIf="!editMode" class="form-text">{{ companyObject.field }}</span>
+        <input *ngIf="editMode" type="text" [(ngModel)]="companyObject.field" (change)="updateCompanyData()">
+      </p>
+    </div>
+    <div class="col-lg-6 mt-2 JobDetailsP">
+      <p>Founded:
+        <span *ngIf="!editMode" class="form-text">{{ companyObject.yearFounded }}</span>
+        <input *ngIf="editMode" type="text" [(ngModel)]="companyObject.yearFounded" (change)="updateCompanyData()">
+      </p>
+      <p>Company Size: <span class="form-text">More than 1000 employees</span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 form-text">{{ companyObject.about }}</div>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <h3>Open Vacancies at {{ companyObject.name }}</h3>
+  <div style="text-align: right;">
+
+    <i class="btn w-25 fas fa-plus" routerLink="/PostJop" style="color:white;background-color: #5B7E6F; ">Add Job</i>
+  </div>
+  <div class="row container w-75 p-0 rounded mt-3" *ngFor="let Job of job">
+    <div class="col-lg-12 mt-2 JobDetailsP">
+      <div style="color: #a3a3a3; font-size: 30px; float: right; position: absolute; top: 0; right: 0;">
+        <i routerLink="/JobDetailCompanySide/{{Job.id}}" class="far fa-edit edit-icon"></i>
+        <i (click)="deleteJob(Job.id)" class="far fa-trash-alt " style=" margin-left: 10px; margin-right:5px ;"></i>
+      </div>
+      <ul style="list-style: none;">
+        <li>
+          <h6 class="fw-bold"> <span>{{ Job.title }} </span>
+
+            -
+            <span>{{ Job.location }}</span>
+
+          </h6>
+          <p class="form-text">Job Status: <span *ngIf="Job.paused; else availableStatus">Paused</span></p>
+          <ng-template #availableStatus class="form-text">Available</ng-template>
+          <p class="form-text my-1 border" style="width: 63px; text-align: center;">Full Time</p>
+          <p class="form-text my-1">Software Development · Team Work · Communication skills . 26 days ago</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container p-0 col-lg-12" style="border: none; text-align: center;">
+  <button class="btn w-25" routerLink="/ViewApplicants/{{ companyId }}"
+    style="color:white;background-color: #7c7e7d; margin-bottom: 15px;">View Applicants</button>
+</div>
+<div class="container col-lg-12 " style="border: none; text-align: center; ">
+  <button class="btn " style="width: 300px; background-color: #5B7E6F; color: white;" (click)="toggleEditMode()">Save Changes</button>
+</div>

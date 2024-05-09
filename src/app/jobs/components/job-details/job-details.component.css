@@ -1,0 +1,33 @@
+.BuildIcon{
+    font-size: 80px;
+    right: 40px;
+    margin-top: 20px;
+    position: absolute;
+}
+.container{
+    position: relative;
+    width: 880px;
+    border: 1px solid black;
+    padding: 25px;
+}
+.Skills{
+    background-color: rgb(228, 228, 228);
+    border-radius: 10px;
+    padding: 10px;
+    width: 800px;
+    margin: auto;
+}
+.Skills div span{
+    /* margin: 0px 5px; */
+    background-color: rgb(203, 203, 203);
+    border-radius: 20px;
+    padding: 5px;
+    transition: 0.5s;
+}
+.Skills div span:hover{
+    background-color: rgb(205, 204, 204);
+}
+.Skills div{
+    display: flex;
+    justify-content:space-evenly ;
+}

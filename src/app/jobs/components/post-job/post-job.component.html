@@ -1,0 +1,39 @@
+<div class="container" >
+    <div class="screen">
+		<div class="screen__content">
+        
+    <h1 class="loginhead" > POST A JOP </h1>
+    <form  (submit)="PostNewJop()">
+    <div class="login__field">
+       <h5>JOP TITLE :</h5> <br> <input type="text" class="login__input" placeholder="Name"  name="name" style="margin-left:80px;"  [(ngModel)]="Name" >
+    </div>
+    <div class="login__field">
+        <h5>JOP Description :</h5> <br>
+        <textarea id="message" name="message" rows="4" cols="50" placeholder="Write Description here..."  style="margin-left:30px;"  [(ngModel)]="Description"></textarea><br>
+    </div>
+    <div class="login__field">
+        <h5>JOP LOCATION :</h5> <br> <input type="text" class="login__input" placeholder="Location"  name="Location" style="margin-left:40px;  "  [(ngModel)]="Location" >
+     </div>
+     <div class="login__field">
+        <h5>QUALIFICATIONS :</h5> <br> <input type="text" class="login__input" placeholder="Qualifications"  name="Qualifications" style="margin-left:20px;"  [(ngModel)]="qualifications" >
+     </div>
+     <div class="login__field">
+        <h5>EDUCATIONAL LEVEL :</h5> <br> <input type="text" class="login__input" placeholder="Educational Level"  name="EducationalLevel" style="margin-left:20px;"  [(ngModel)]="EducationalLevel"  >
+     </div>
+    <!-- <div class="login__field">
+        <label><input type="checkbox"  name="isCompany"> join as company</label>
+    </div> -->
+  
+      <div  style=" position:absolute; right:-550px; bottom:30px;"  ><button type="submit" class="button" >
+        <span class="button__text" >POST</span>
+    </button>
+    </div>	
+    </form>
+   </div>
+   
+   <div class="screen__background">
+    <img src="https://static.vecteezy.com/system/resources/previews/021/608/976/non_2x/we-are-hiring-banner-free-png.png" alt="">
+</div>	
+    </div>
+</div>
+

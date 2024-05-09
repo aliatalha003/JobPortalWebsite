@@ -1,0 +1,68 @@
+<div class="container container-extra mb-5">
+    <div class="row">
+      <div class="col-lg-3">
+        <i class="fas fa-user-circle user-profile-icon"></i>
+      </div>
+      <div class="col-lg-9 mt-3">
+        <h5 >{{applicantObj.firstName}} {{applicantObj.lastName}} <i class="fas fa-check-circle fs-5" style="color: #005ca3;"></i></h5>
+        <div class="d-block">
+        </div>
+        <p class="form-text">{{applicantObj.address}} | <a href="">{{applicantObj.email}}</a> | {{applicantObj.phone}} </p>
+        
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <h3>About</h3>
+    <!-- <i class="far fa-edit" style="color: #a3a3a3;  font-size: 30px; float: right; position: absolute; top:0 ; right: 0; cursor: pointer;" (click)="toggleEditingMode()"></i> -->
+    <div class="row">
+      <div class="col-lg-12 mt-2 JobDetailsP">
+        <p >{{applicantObj.about}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <h3>Education</h3>
+    <div class="row">
+        <div class="col-lg-12 mt-2 JobDetailsP">
+            <ul>
+                <li style="list-style: none;">
+                   
+                        <h6  class="fw-bold">{{applicantObj.education}} </h6>
+                        <p *ngIf="applicantObj.education !== ''" class="form-text my-2">JAN 2019 -  Jul 2023</p>
+                        <p *ngIf="applicantObj.education !== ''" class="form-text">Grade : Good</p>
+                 
+                    
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <h3>Courses</h3>
+    <div class="row">
+      <div class="col-lg-12 mt-2 JobDetailsP">
+        <ul style="list-style: none;" *ngFor="let course of applicantObj.courses">
+          <hr>
+          <li >
+            <h6  class="fw-bold">{{course.name}}</h6>
+            
+            <p  class="form-text my-1">{{course.description}}</p>
+            <hr>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="container col-lg-12 " style="border: none; text-align: center; ">
+    <button class="btn btn-outline-success w-25 mx-3" (click)="viewCV()">View CV</button>
+
+  </div>
+  

@@ -1,0 +1,65 @@
+
+<div class="container mb-5" >
+    <div class="row">
+        <div class="col-lg-8">
+            <h3>{{ JobList.title }}</h3>
+            <div>
+                <span class="bg-body-secondary">Full time</span>
+                <span class="ms-3 bg-body-secondary">On site</span>
+            </div>
+            <p><a style="color: black;" routerLink="/CompanyProfileUserSide/{{company.id}}">{{company.name}}</a> <i class="far fa-check-circle"  style="color: blue;" ></i ><span style="margin-left: 20px;">{{company.address}}</span> </p>
+            <p>posted 8 mins ago</p>
+            <button class="btn btn-success" (click)="handleApplyClick()"    >Apply</button>
+        </div>
+        <div class="col-lg-4">
+            <!-- <i class="fas fa-landmark BuildIcon">  </i> -->
+            <img src="{{company.logo}}" style="width: 200px;height: 200px;" >
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+    <h3>Job Details</h3>
+    <div class="row">
+        <div class="col-lg-10 mt-2 JobDetailsP">
+            <p>Experience needed: <span class="ms-2">{{JobList.experienceNeeded}} </span></p>
+            <p>Educational Level: <span class="ms-2">{{JobList.educationLevel}} </span></p>
+            <p>Salary:<span class="ms-2">{{JobList.salary}} </span> </p>
+            <p>Job Location:<span class="ms-2">{{JobList.location}} </span></p>
+        </div>
+        <!-- <div class="col-lg-9 mt-2">
+            <p class="ms-4">{{JobList.experienceNeeded}}</p>
+            <p class="ms-4">{{JobList.educationLevel}}</p>
+            <p class="ms-4">{{JobList.salary}}</p>
+            <p class="ms-4">{{JobList.location}}</p>
+
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12 Skills">
+            <h4>Skills and Tools</h4>
+            <div><span>Analysis</span><span>Finance</span><span>Accounting</span><span>Financial
+                    Analysis</span><span>Financial</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3>Job Description</h3>
+    <div class="row">
+        <div class="col-lg-12 mt-2 JobDetailsP">
+            <ul>
+                {{JobList.description}}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+    <h3>Job Requirements</h3>
+    <div class="row">
+        <div class="col-lg-12 mt-2 JobDetailsP">
+            <ul  *ngFor="let q of JobList.qualifications" >
+                <li>{{q}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

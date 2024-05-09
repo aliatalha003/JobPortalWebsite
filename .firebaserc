@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "jobportal-eba6c": {
+      "hosting": {
+        "job-portal2": [
+          "jobportal-eba6c"
+        ]
+      }
+    },
+    "job-portal2-701c1": {
+      "hosting": {
+        "job-portal2": [
+          "job-portal2-701c1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "job-portal2-701c1"
+  }
+}

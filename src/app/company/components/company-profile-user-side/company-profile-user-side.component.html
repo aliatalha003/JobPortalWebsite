@@ -1,0 +1,62 @@
+<div>
+    <div class="container container-extra  mb-5">
+        <div class="row">
+            <div class="col-lg-3 " style="position: relative; text-align: right;">
+                <!-- <i class="fas fa-landmark user-profile-icon "></i> -->
+                <img class="companyLogo" src="{{companyObject.logo}}">
+            </div>
+            <div class="col-lg-9 d-flex flex-column justify-content-center">
+    
+                <h5>{{companyObject.name}}<i class="fas fa-check-circle fs-5" style="color: #005ca3;"></i></h5>
+                <p class="form-text"><i class="fas fa-link"></i><a class="text-dark" href=""> {{companyObject.email}}
+                </a>| <i class="fab fa-facebook-square"
+                        style="font-size: 18px;"></i><i class="fab fa-linkedin ms-1" style="font-size: 18px;"></i></p>
+               
+    
+            </div>
+        </div>
+    </div>
+    <div class="container mb-5">
+        <h3>Company Profile</h3>
+       
+        <div class="row">
+            <div class="col-lg-6 mt-2 JobDetailsP ">
+                <p>Location: <span class="form-text">{{companyObject.address }}</span></p>
+                <p>Industry: <span class="form-text">{{companyObject.field }}</span></p>
+    
+            </div>
+            <div class="col-lg-6 mt-2 JobDetailsP ">
+                <p>Founded: <span class="form-text">{{companyObject.yearFounded}}</span></p>
+                <p>Company Size: <span class="form-text">More than 1000 employees</span></p>
+    
+            </div>
+    
+        </div>
+        <div class="row">
+            <div class="col-lg-12 form-text">
+                {{companyObject.about}}
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="container mb-5">
+        <h3>
+            Open Vacancies at {{companyObject.name}}</h3>
+        <div class="row container w-75 p-0 rounded mt-3" *ngFor="let Job of job">
+            <div class="col-lg-12 mt-2 JobDetailsP" >
+               
+                <ul style="list-style: none;" >
+                    <li >
+                        <h6 class="fw-bold">{{Job.title}} - {{Job.location}}</h6>
+                        <p class="form-text my-1 border" style="width: 63px; text-align: center;">Full Time</p>
+                        <p class="form-text my-1">Software Development · Team Work · Communication skills . 26 days ago</p>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+
+    </div>

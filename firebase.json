@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "job-portal2",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "europe-west1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+<div class="container">
+    <h2 class="container-header mb-5">Job Application</h2>
+    <div class="rectangle"></div>
+    <h4 class="SectionHeader">Personal Information</h4>
+    <div class="row mb-2">
+       
+        <div class="col-md-6">
+            <label for="inputFName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="inputName" [(ngModel)]="applicantObj.firstName">
+        </div>
+        <div class="col-md-6">
+            <label for="inputLName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="inputLName" [(ngModel)]="applicantObj.lastName">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-lg-6 mb-3 my-4 UserInput">
+
+
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Male" >
+            <label class="form-check-label" for="gridRadios1">
+                Male
+            </label>
+
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Female"
+                style="margin-left: 80px;">
+            <label class="form-check-label" for="gridRadios2">
+                Female
+            </label>
+
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="text" class="form-control" id="inputEmail" [(ngModel)]="applicantObj.email">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <label for="inputDOB" class="form-label">Date of birth</label>
+            <input type="Date" class="form-control" id="inputDOB" [(ngModel)]="applicantObj.dob">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPhone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="inputPhone" [(ngModel)]="applicantObj.phone">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" [(ngModel)]="applicantObj.address">
+        </div>
+
+    </div>
+
+    <div class="row my-4">
+        <div class="col-md-12">
+            <form>
+                <div class="rectangle"></div>
+                <h4 class="SectionHeader">Experience</h4>
+                <input class="form-control" type="number" id="Experience" name="Experience" min="1" max="20" step="1"
+                    value="1" [(ngModel)]="applicantObj.experienceYears">
+            </form>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <div class="mb-3">
+                <div class="rectangle"></div>
+                <h4 class="SectionHeader">Upload CV</h4>
+                <input type="file" class="form-control w-50" (change)="onFileSelected($event)" required>
+            </div>
+        </div>
+        <button class="btn btn-success" (click)="applyForJob()" type="submit">Send</button>
+    </div>
+    
+</div>

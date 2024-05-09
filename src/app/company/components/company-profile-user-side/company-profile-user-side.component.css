@@ -1,0 +1,23 @@
+.container{
+    position: relative;
+    width: 880px;
+    border: 1px solid black;
+    padding: 25px;
+}
+.container-extra{
+    border:0;
+    border-bottom: 1px solid black;
+}
+.user-profile-icon{
+    font-size: 90px;
+    margin-left: 70px;
+    color: grey;
+}
+.companyLogo{
+    width: 140px;
+    height: 140px;
+
+    /* border-radius: 50%; */
+    /* right: 0; */
+    /* position: absolute; */
+}

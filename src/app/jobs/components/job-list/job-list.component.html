@@ -1,0 +1,80 @@
+<!-- filter div  -->
+<div class="filter_class">
+
+    <div class="filter_text" >
+        <h3>filter</h3>
+    </div>
+ <div class="dropdown" >
+    <input type="text" placeholder=" Key Word"  (change)="FilterByKeyword($event)" >
+ </div>
+
+
+<div class="dropdown">
+  <label for="locationDropdown1">Type</label>
+  <select id="locationDropdown1" (change)="FilterByType($event)">
+    <option  value=""  class="dropdown-option">All</option>
+    <option  *ngFor="let type of allTypes">{{ type }}</option>
+  </select>
+</div>
+
+<div class="dropdown">
+  <label for="locationDropdown2">Location</label>
+  <select id="locationDropdown2" (change)="FilterByLocation($event)">
+    <option  value=""  class="dropdown-option">All</option>
+    <option  *ngFor="let location of allLocations">{{ location }}</option>
+  </select>
+</div>
+
+<div class="dropdown">
+  <label  for="salaryDropdown3" class="dropdown-label">Salary Range</label>
+  <select id="salaryDropdown3"   class="dropdown-select"  (change)="FilterBySalary($event)">
+    <option  value=""  class="dropdown-option">All</option>
+    <option value="0-10"  class="dropdown-option">Less than 10K</option>
+    <option value="10-15"  class="dropdown-option">10K - 15K</option>
+    <option value="15+"  class="dropdown-option">More than 15K</option>
+  </select>
+</div>
+
+
+</div>
+<div class="list_class"  *ngIf="isfilterd===true" >
+  <ul class="product-list" *ngFor="let com of companies">
+    <ng-container   *ngFor="let job of filteredJobList"  >
+      <li class="product-item"  *ngIf="job.company === com.id">
+        <img src="{{com.logo}}" alt="Product 1">
+        <div class="Description" >
+          <h5>{{job.title}}</h5>
+          <p>{{com.name}}</p>
+          <p>{{job.location}}</p>
+        </div>
+        <div class="class_buttons">  
+          <button class="btn-save" (click)="AddJobToFav(job.id)" > {{ displayText }} </button> <br>
+          <button class="btn-datails"  routerLink="/JobDetails/{{job.id}}" routerLinkActive="active" >Job Details</button>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+<!-- list div  -->
+<div class="list_class"  *ngIf="isfilterd===false"  >
+  <ul class="product-list" *ngFor="let com of companies">
+    <ng-container   *ngFor="let job of JobList"  >
+      <li class="product-item"  *ngIf="job.company === com.id">
+        <img src="{{com.logo}}" alt="Product 1">
+        <div class="Description" >
+          <h5>{{job.title}}</h5>
+          <p>{{com.name}}</p>
+          <p>{{job.location}}</p>
+        </div>
+        <div class="class_buttons">  
+          <button class="btn-save" (click)="AddJobToFav(job.id)" > Save </button> <br>
+          <button class="btn-datails"  routerLink="/JobDetails/{{job.id}}" routerLinkActive="active" >Job Details</button>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+
+
+

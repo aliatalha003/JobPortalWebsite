@@ -1,0 +1,88 @@
+<div class="container container-extra mb-5">
+    <div class="row">
+      <div class="col-lg-3">
+        <i class="fas fa-user-circle user-profile-icon"></i>
+      </div>
+      <div class="col-lg-9 mt-3">
+        <h5 *ngIf="!editingMode">{{applicantObj.firstName}} {{applicantObj.lastName}} <i class="fas fa-check-circle fs-5" style="color: #005ca3;"></i></h5>
+        <div class="d-block">
+        <input (change)="updateApplicant()" type="text" class="my-2  " *ngIf="editingMode" [(ngModel)]="applicantObj.firstName" placeholder="First Name">
+        <input (change)="updateApplicant()" type="text" class="my-2  ms-3" *ngIf="editingMode" [(ngModel)]="applicantObj.lastName" placeholder="Last Name">
+        </div>
+        <p class="form-text" *ngIf="!editingMode">{{applicantObj.address}} | <a href="">{{applicantObj.email}}</a> | {{applicantObj.phone}} </p>
+        <input (change)="updateApplicant()" type="text"  *ngIf="editingMode" [(ngModel)]="applicantObj.address" placeholder="Address">
+        <input (change)="updateApplicant()" type="text" class="mx-3" *ngIf="editingMode" [(ngModel)]="applicantObj.email" placeholder="Email">
+        <input (change)="updateApplicant()" type="text"  *ngIf="editingMode" [(ngModel)]="applicantObj.phone" placeholder="Phone">
+        
+        
+        <i class="far fa-edit edit-icon" (click)="toggleEditingMode()"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <h3>About</h3>
+    <!-- <i class="far fa-edit" style="color: #a3a3a3;  font-size: 30px; float: right; position: absolute; top:0 ; right: 0; cursor: pointer;" (click)="toggleEditingMode()"></i> -->
+    <div class="row">
+      <div class="col-lg-12 mt-2 JobDetailsP">
+        <p *ngIf="!editingMode">{{applicantObj.about}}</p>
+        <textarea class="form-control" *ngIf="editingMode" placeholder="Write about yourself here.." [(ngModel)]="applicantObj.about"></textarea>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <h3>Education</h3>
+    <div class="row">
+        <div class="col-lg-12 mt-2 JobDetailsP">
+            <ul>
+                <li style="list-style: none;">
+                    <div *ngIf="!editingMode">
+                        <h6  class="fw-bold">{{applicantObj.education}} </h6>
+                        <p *ngIf="applicantObj.education !== ''" class="form-text my-2">JAN 2019 -  Jul 2023</p>
+                        <p *ngIf="applicantObj.education !== ''" class="form-text">Grade : Good</p>
+                    </div>
+                    <input (change)="updateApplicant()" type="text" class="w-50"  *ngIf="editingMode" [(ngModel)]="applicantObj.education" placeholder="Education">
+                    
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <h3>Courses</h3>
+    <div class="row">
+      <div class="col-lg-12 mt-2 JobDetailsP">
+        <ul style="list-style: none;" *ngFor="let course of applicantObj.courses">
+          <hr>
+          <li >
+            <h6 *ngIf="!editingMode" class="fw-bold">{{course.name}}</h6>
+            <input (change)="updateApplicant()" type="text" class="w-50 d-block my-2"  *ngIf="editingMode" [(ngModel)]="course.name" placeholder="Course Name">
+            
+            <p *ngIf="!editingMode" class="form-text my-1">{{course.description}}</p>
+            <textarea (change)="updateApplicant()" type="text" class="w-75 form-control"  *ngIf="editingMode" [(ngModel)]="course.description" placeholder="Course description">
+            </textarea>
+            <hr>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>  
+ 
+  <div class="container col-lg-12">
+    <h3>CV</h3>
+    <input class="form-control mt-2 w-50 d-inline" id="formFileLg" type="file" (change)="onFileSelected($event)">
+    <button class="btn w-25 btns2 d-inline ms-3" (click)="updateApplicantCv()">Update CV</button>
+    <div class="col-lg-12 mt-4">
+      <button class="btn w-25 btns1 btn-success"style="width: 300px;" (click)="openCV()">View CV</button>
+    </div>
+  </div>
+  
+  <div class="container col-lg-12 " style="border: none; text-align: center; ">
+    <button class="btn btn-success me-4" style="width: 300px;" (click)="toggleEditingMode()">Save Changes</button>
+  </div>
+
+  
+  

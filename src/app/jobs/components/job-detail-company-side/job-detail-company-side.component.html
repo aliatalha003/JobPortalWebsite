@@ -1,0 +1,77 @@
+<div class="container mb-5" >
+    <div class="row">
+        <div class="col-lg-8">
+            <h3 *ngIf="!editMode">{{ JobObj.title }}</h3>
+        <input *ngIf="editMode" type="text" [(ngModel)]="JobObj.title" (change)="updateJobsData(JobObj)">
+
+            <div>
+                <span class="bg-body-secondary">Full time</span>
+                <span class="ms-3 bg-body-secondary">On site</span>
+            </div>
+            <p >{{company.name}} <i class="far fa-check-circle"  style="color: blue;" ></i ><span style="margin-left: 20px;">{{company.address}}</span> </p>
+            <p>posted 8 mins ago</p>
+            <button class="btn btn-success" (click)="togglePauseJob(JobObj)">{{ JobObj.paused ? 'Unpause Job' : 'Pause Job' }}</button>
+            <button class="btn btn-success ms-3 " (click)="toggleEditMode()">Edit</button>
+            
+        </div>
+        <div class="col-lg-4">
+            <!-- <i class="fas fa-landmark BuildIcon">  </i> -->
+            <img src="{{company.logo}}" style="width: 200px;height: 200px;" >
+        </div>
+
+    </div>
+</div>
+<div class="container mb-5">
+    <h3>Job Details</h3>
+    <div class="row">
+        <div class="col-lg-10 mt-2 JobDetailsP">
+            <p>Experience needed: <span class="ms-3" *ngIf="!editMode" >{{JobObj.experienceNeeded}}</span>
+        <input class="d-inline" *ngIf="editMode" type="text" [(ngModel)]="JobObj.experienceNeeded" (change)="updateJobsData(JobObj)">
+</p>
+            <p>Educational Level: <span class="ms-3" *ngIf="!editMode" >{{JobObj.educationLevel}}</span>
+        <input class="d-inline my-3"  *ngIf="editMode" type="text" [(ngModel)]="JobObj.educationLevel" (change)="updateJobsData(JobObj)">
+</p>
+            <p>Salary: <span class="ms-3" *ngIf="!editMode" >{{JobObj.salary}}</span> 
+        <input class="d-inline"  *ngIf="editMode" type="text" [(ngModel)]="JobObj.salary" (change)="updateJobsData(JobObj)">
+</p>
+            <p>Job Location:<span class="ms-3" *ngIf="!editMode" >{{JobObj.location}}</span>
+        <input class="d-inline mt-3"  *ngIf="editMode" type="text" [(ngModel)]="JobObj.location" (change)="updateJobsData(JobObj)">
+</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 Skills">
+            <h4>Skills and Tools</h4>
+            <div><span>Analysis</span><span>Finance</span><span>Accounting</span><span>Financial
+                    Analysis</span><span>Financial</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3>Job Description</h3>
+    <div class="row">
+        <div class="col-lg-12 mt-2 JobDetailsP">
+            
+               <span *ngIf="!editMode"> {{JobObj.description}}</span>
+        <input *ngIf="editMode" type="text" [(ngModel)]="JobObj.description" (change)="updateJobsData(JobObj)">
+            
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+    <h3>Job Requirements</h3>
+    <div class="row">
+        <div class="col-lg-12 mt-2 JobDetailsP">
+            <ul *ngFor="let q of JobObj.qualifications; let i = index">
+                <li *ngIf="!editMode">{{ q }}</li>
+                <li *ngIf="editMode">
+                    <input type="text" [(ngModel)]="JobObj.qualifications[i]" (change)="updateJobsData(JobObj)">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container col-lg-12 " style="border: none; text-align: center; ">
+    <button class="btn btn-success me-4" style="width: 300px;" (click)="toggleEditMode()">Save Changes</button>
+  </div>

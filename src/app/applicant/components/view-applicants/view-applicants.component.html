@@ -1,0 +1,55 @@
+<!-- filter div  -->
+<div class="filter_class">
+  <div class="filter_text">
+    <h4>Search</h4>
+    <input type="text" placeholder="Key Word" (change)="FilterByKeyword($event)">
+  </div>
+</div>
+
+<h3>JOB APPLICANTS</h3>
+
+<div class="list_class" *ngIf="isfilterd">
+  <ul class="product-list" *ngIf="filteredApplicant.length > 0">
+    <ng-container *ngFor="let app of filteredApplicant">
+      <li class="product-item" *ngFor="let job of JobList">
+        <ng-container *ngIf="job.applicantApplied.includes(app.id)">
+          <div class="Description">
+            <h4>{{app.firstName}} {{app.lastName}}</h4>
+            <p>{{job.title}}</p>
+          </div>
+          <div class="class_buttons">
+            <button class=" btn-datails ms-auto" routerLink="/UserProfileCompanySide/{{app.id}}">View Profile</button>
+            <br>
+            <button class="btn-save ms-auto" (click)="RemoveApplied(app.id, job.id)">Ignore</button>
+          </div>
+        </ng-container>
+      </li>
+    </ng-container>
+  </ul>
+  <div *ngIf="filteredApplicant.length === 0" class="no-applicants-found">
+    <p>No applicants found.</p>
+  </div>
+</div>
+
+<div class="list_class" *ngIf="!isfilterd">
+  <ul class="product-list" *ngIf="apllicant.length > 0">
+    <ng-container *ngFor="let app of apllicant">
+      <li class="product-item" *ngFor="let job of JobList">
+        <ng-container *ngIf="job.applicantApplied.includes(app.id)">
+          <div class="Description">
+            <h4>{{app.firstName}} {{app.lastName}}</h4>
+            <p>{{job.title}}</p>
+          </div>
+          <div class="class_buttons">
+            <button class=" btn-datails " routerLink="/UserProfileCompanySide/{{app.id}}">View Profile</button>
+            <br>
+            <button class="btn-save" (click)="RemoveApplied(app.id, job.id)">Ignore</button>
+          </div>
+        </ng-container>
+      </li>
+    </ng-container>
+  </ul>
+  <div *ngIf="apllicant.length === 0" class="no-applicants-found">
+    <p>No applicants found.</p>
+  </div>
+</div>
