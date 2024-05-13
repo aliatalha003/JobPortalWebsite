@@ -140,8 +140,9 @@ export class AuthService {
   }
 
 
-  registerCompany(email: string, password: string, company: Company) {
-    this.fireauth.createUserWithEmailAndPassword(email, password)
+  registerCompany(company: Company) {
+    
+    this.fireauth.createUserWithEmailAndPassword(company.email, company.password)
       .then((userCredential) => {
         if (userCredential.user) {
           const userId = userCredential.user.uid; // Get the user ID from the userCredential

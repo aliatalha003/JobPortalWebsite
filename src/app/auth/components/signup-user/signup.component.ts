@@ -1,60 +1,58 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Applicant } from '../../../applicant/models/applicant';
-import { Course } from '../../../applicant/models/course';
-import { Job } from '../../../jobs/models/job';
 import { DataService } from '../../../shared/services/data.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit{
-  email:string='';
-  password:string='';
-  FirstName:string='';
-  LastName:string='';
+export class SignupComponent implements OnInit {
+  signupForm!: FormGroup;
 
-  // applicantList: Applicant[] = [];
-  applicantObj:Applicant={
-    id: '',
-    firstName: '',
-    lastName: '',
-    gender: '',
-    dob: new Date(),
-    phone: '',
-    password: '',
-    address: '',
-    courses: [{ name: '', description: '' }],
-    experienceYears: '',
-    education: '',
-    email: '',
-    favJobs: [] as Job[],
-    cv: '',
-    about: ''
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private firestore: DataService
+  ) {}
 
-  constructor(private auth:AuthService,private firestore:DataService){}
   ngOnInit(): void {
+    this.signupForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      FirstName: ['', [Validators.required, Validators.minLength(3)]],
+      LastName: ['', [Validators.required, Validators.minLength(3)]]
+    });
   }
 
-  register(){
-    if(this.email=='' ||this.password==''  ){
-      alert('Please enter all the values')
-      return ;
+  register() {
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched();
+      return;
     }
-    this.applicantObj.email=this.email;
-    this.applicantObj.password=this.password;
-    this.applicantObj.firstName=this.FirstName;
-    this.applicantObj.lastName=this.LastName;
 
-  // const emptyRef = this.firestore.getEmptyReference();
-    // this.applicantObj.favJobs=emptyRef;
-    this.auth.registerUser(this.email,this.password,this.applicantObj);
-    
-    this.email='';
-    this.password='';
-    this.FirstName='';
-    this.LastName='';
+    const applicantObj: Applicant = {
+      id: '',
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password,
+      firstName: this.signupForm.value.FirstName,
+      lastName: this.signupForm.value.LastName,
+      gender: '',
+      dob: new Date(),
+      phone: '',
+      address: '',
+      courses: [{ name: '', description: '' }],
+      experienceYears: '',
+      education: '',
+      favJobs: [],
+      cv: '',
+      about: ''
+    };
+
+    this.auth.registerUser(this.signupForm.value.email, this.signupForm.value.password, applicantObj);
+
+    this.signupForm.reset();
   }
 }

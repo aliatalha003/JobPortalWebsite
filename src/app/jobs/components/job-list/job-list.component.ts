@@ -80,22 +80,26 @@ getAllJobs() {
   }); 
 } 
  
-AddJobToFav(id:any){ 
- 
+AddJobToFav(jobId: any) { 
   const dataPromise = this.auth.getCurrentApplicantData(); 
   dataPromise.then(data => { 
-     this.applicantObj=data; 
-     if( !this.applicantObj.favJobs.includes(id)){ 
-        this.applicantObj.favJobs.push(id); 
-          this.data.updateApplicant(this.applicantObj, data.id).then(()=>{ 
-           alert('Job saved'); 
-          }); 
-     } 
+    this.applicantObj = data; 
+    const jobIndex = this.applicantObj.favJobs.findIndex(favJob => favJob=== jobId); 
+    if (jobIndex === -1) { 
+      this.applicantObj.favJobs.push(jobId); 
+      this.data.updateApplicant(this.applicantObj, data.id).then(() => { 
+        alert('Job saved'); 
+         
+      }); 
+    } else { 
+      this.applicantObj.favJobs.splice(jobIndex, 1); 
+      this.data.updateApplicant(this.applicantObj, data.id).then(() => { 
+        alert('Job removed from saved'); 
+      }); 
+    } 
   }).catch(error => { 
     console.error('Error fetching applicant data:', error); 
   }); 
-    
- 
 } 
 
 

@@ -1,53 +1,49 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Company } from '../../../company/models/company';
 
 @Component({
   selector: 'app-signup-company',
   templateUrl: './signup-company.component.html',
-  styleUrl: './signup-company.component.css'
+  styleUrls: ['./signup-company.component.css']
 })
-export class SignupCompanyComponent implements OnInit{
-  email:string='';
-  password:string='';
-  name:string='';
-  field:string='';
-  address:string='';
-  companyObj: Company = {
-    id: '',
-    name: '',
-    email: '',
-    address: '',
-    field: '',
-    password: '',
-    jobs: [],
-    yearFounded: '',
-    about: '',
-    logo: ''
-  };
+export class SignupCompanyComponent implements OnInit {
+  signupForm!: FormGroup;
 
-  constructor(private auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.signupForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      address: ['', [Validators.required, Validators.minLength(3)]],
+      field: ['', [Validators.required, Validators.minLength(4)]]
+    });
+  }
 
   registerCompany() {
-    if (this.email === '' || this.password === '' || this.name === '' || this.address === '' || this.field === '') {
-      alert('Please enter all the values');
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched();
       return;
     }
 
-    this.companyObj.email = this.email;
-    this.companyObj.password = this.password;
-    this.companyObj.name = this.name;
-    this.companyObj.address = this.address;
-    this.companyObj.field = this.field;
-    
-    this.auth.registerCompany(this.email, this.password, this.companyObj);
+    const companyObj: Company = {
+      id: '',
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password,
+      name: this.signupForm.value.name,
+      address: this.signupForm.value.address,
+      field: this.signupForm.value.field,
+      jobs: [],
+      yearFounded: '',
+      about: '',
+      logo: ''
+    };
 
-    this.email = '';
-    this.password = '';
-    this.name = '';
-    this.address = '';
-    this.field = '';
+    this.auth.registerCompany(companyObj);
+
+    this.signupForm.reset();
   }
 }

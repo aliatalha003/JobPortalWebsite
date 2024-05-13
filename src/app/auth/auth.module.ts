@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { SignupCompanyComponent } from './components/signup-company/signup-company.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -16,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[
     LoginComponent,

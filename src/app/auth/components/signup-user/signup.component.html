@@ -1,44 +1,48 @@
-<div class="container" >
+<div class="container">
     <div class="screen">
-		<div class="screen__content">
-        
-    <h1 class="loginhead" > Sign Up </h1>
-    <form action="signup">
-    <div class="login__field">
-        <input type="text" class="login__input" placeholder="First Name"  name="FirstName" [(ngModel)]="FirstName">
+      <div class="screen__content">
+        <h1 class="loginhead">Sign Up</h1>
+        <form [formGroup]="signupForm" (ngSubmit)="register()">
+          <div class="login__field">
+            <input type="text" class="login__input" placeholder="First Name" formControlName="FirstName">
+            <p *ngIf="signupForm.controls['FirstName'].invalid && signupForm.controls['FirstName'].touched" class="warning text-danger">
+              <ng-container *ngIf="signupForm.controls['FirstName'].errors?.['required']">First Name is required</ng-container>
+              <ng-container *ngIf="signupForm.controls['FirstName'].errors?.['minlength']">First Name must be at least 3 characters long</ng-container>
+            </p>
+          </div>
+          <div class="login__field">
+            <input type="text" class="login__input" placeholder="Last Name" formControlName="LastName">
+            <p *ngIf="signupForm.controls['LastName'].invalid && signupForm.controls['LastName'].touched" class="warning text-danger">
+              <ng-container *ngIf="signupForm.controls['LastName'].errors?.['required']">Last Name is required</ng-container>
+              <ng-container *ngIf="signupForm.controls['LastName'].errors?.['minlength']">Last Name must be at least 3 characters long</ng-container>
+            </p>
+          </div>
+          <div class="login__field">
+            <input type="email" class="login__input" placeholder="Email" formControlName="email">
+            <p *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched" class="warning text-danger">
+              <ng-container *ngIf="signupForm.controls['email'].errors?.['required']">Email is required</ng-container>
+              <ng-container *ngIf="signupForm.controls['email'].errors?.['email']">Please enter a valid email</ng-container>
+            </p>
+          </div>
+          <div class="login__field">
+            <input type="password" class="login__input" placeholder="Password" formControlName="password">
+            <p *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched" class="warning text-danger">
+              <ng-container *ngIf="signupForm.controls['password'].errors?.['required']">Password is required</ng-container>
+              <ng-container *ngIf="signupForm.controls['password'].errors?.['minlength']">Password must be at least 6 characters long</ng-container>
+            </p>
+          </div>
+          <div class="sign-up-text">
+            <a class="sign-up-text" routerLink="/Login">Have An Account ? Log in</a>
+          </div>
+          <button type="submit" class="button" style="margin-top:-40px;">Sign Up</button>
+        </form>
+      </div>
+      <div class="screen__background">
+        <span class="screen__background__shape screen__background__shape4"></span>
+        <span class="screen__background__shape screen__background__shape3"></span>
+        <span class="screen__background__shape screen__background__shape2"></span>
+        <span class="screen__background__shape screen__background__shape1"></span>
+      </div>
     </div>
-    <div class="login__field">
-        <input type="text" class="login__input" placeholder="Last Name"  name="LastName" [(ngModel)]="LastName">
-    </div>
-    <div class="login__field">
-        <input type="email" class="login__input" placeholder="Email" name="email" [(ngModel)]="email">
-    </div>
-    <!-- <div class="login__field">
-        <input type="text" class="login__input" placeholder="Address" name="address" >
-    </div> -->
-    <!-- <div class="login__field">
-        <input type="text" class="login__input" placeholder="Field" name="field">
-    </div> -->
-    <div class="login__field">
-        <input type="password" class="login__input" placeholder="Password"  name="password" [(ngModel)]="password">
-    </div>
-    <!-- <div class="login__field">
-        <label><input type="checkbox"  name="isCompany"> join as company</label>
-    </div> -->
-    <div class="sign-up-text">
-        <a class="sign-up-text" routerLink="/Login">Have An Account ? Log in </a>
-    </div>
-    <button class="button" style="margin-top:-40px ;" >
-        <span class="button__text" (click)="register()">Sign Up</span>
-    </button>
-    </form>
-   </div>	
-   <div class="screen__background">
-    <span class="screen__background__shape screen__background__shape4"></span>
-    <span class="screen__background__shape screen__background__shape3"></span>		
-    <span class="screen__background__shape screen__background__shape2"></span>
-    <span class="screen__background__shape screen__background__shape1"></span>
-</div>	
-    </div>
-</div>
-
+  </div>
+  

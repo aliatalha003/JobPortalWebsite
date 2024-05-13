@@ -1,41 +1,39 @@
-<div class="container" >
+<div class="container">
     <div class="screen">
-		<div class="screen__content">
-        
-    <h1 class="loginhead" > Sign Up </h1>
-    <form action="signup">
-    <div class="login__field">
-        <input type="text" class="login__input" placeholder="Name"  name="name" [(ngModel)]="name">
-    </div>
-    <div class="login__field">
-        <input type="email" class="login__input" placeholder="Email" name="email" [(ngModel)]="email">
-    </div>
-    <div class="login__field">
-        <input type="text" class="login__input" placeholder="Address" name="address" [(ngModel)]="address">
-    </div>
-    <div class="login__field">
-        <input type="text" class="login__input" placeholder="Field" name="field" [(ngModel)]="field">
-    </div>
-    <div class="login__field">
-        <input type="password" class="login__input" placeholder="Password"  name="password" [(ngModel)]="password">
-    </div>
-    <!-- <div class="login__field">
-        <label><input type="checkbox"  name="isCompany"> join as company</label>
-    </div> -->
-    <div class="sign-up-text mt-4">
-        <a class="sign-up-text"  routerLink="/Login">Have An Account ? Log in </a>
-    </div>
-    <button class="button" style="margin-top:-40px ;" >
-        <span class="button__text" (click)="registerCompany()">Sign Up</span>
-    </button>
-    </form>
-   </div>	
-   <div class="screen__background">
-    <span class="screen__background__shape screen__background__shape4"></span>
-    <span class="screen__background__shape screen__background__shape3"></span>		
-    <span class="screen__background__shape screen__background__shape2"></span>
-    <span class="screen__background__shape screen__background__shape1"></span>
-</div>	
+      <div class="screen__content">
+        <h1 class="loginhead">Sign Up</h1>
+        <form [formGroup]="signupForm" (ngSubmit)="registerCompany()">
+          <div class="login__field">
+            <input type="text" class="login__input" placeholder="Name" formControlName="name">
+            <p *ngIf="signupForm.get('name')?.errors?.['required'] && signupForm.get('name')?.touched" class="warning text-danger">Name is required</p>
+            <p *ngIf="signupForm.get('name')?.errors?.['minlength'] && signupForm.get('name')?.touched" class="warning text-danger">Name must be at least 3 characters long</p>
+          </div>
+          <div class="login__field">
+            <input type="email" class="login__input" placeholder="Email" formControlName="email">
+            <p *ngIf="signupForm.get('email')?.errors?.['required'] && signupForm.get('email')?.touched" class="warning text-danger">Email is required</p>
+            <p *ngIf="signupForm.get('email')?.errors?.['email'] && signupForm.get('email')?.touched" class="warning text-danger">Please enter a valid email</p>
+          </div>
+          <div class="login__field">
+            <input type="text" class="login__input" placeholder="Address" formControlName="address">
+            <p *ngIf="signupForm.get('address')?.errors?.['required'] && signupForm.get('address')?.touched" class="warning text-danger">Address is required</p>
+            <p *ngIf="signupForm.get('address')?.errors?.['minlength'] && signupForm.get('address')?.touched" class="warning text-danger">Address must be at least 3 characters long</p>
+          </div>
+          <div class="login__field">
+            <input type="text" class="login__input" placeholder="Field" formControlName="field">
+            <p *ngIf="signupForm.get('field')?.errors?.['required'] && signupForm.get('field')?.touched" class="warning text-danger">Field is required</p>
+            <p *ngIf="signupForm.get('field')?.errors?.['minlength'] && signupForm.get('field')?.touched" class="warning text-danger">Field must be at least 4 characters long</p>
+          </div>
+          <div class="login__field">
+            <input type="password" class="login__input" placeholder="Password" formControlName="password">
+            <p *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched" class="warning text-danger">Password is required</p>
+            <p *ngIf="signupForm.get('password')?.errors?.['minlength'] && signupForm.get('password')?.touched" class="warning text-danger">Password must be at least 6 characters long</p>
+          </div>
+          <div class="sign-up-text mt-4">
+            <a class="sign-up-text" routerLink="/Login">Have An Account ? Log in</a>
+          </div>
+          <button type="submit" class="button" style="margin-top:-40px;">Sign Up</button>
+        </form>
+      </div>
     </div>
 </div>
-
+  
